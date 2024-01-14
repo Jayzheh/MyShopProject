@@ -54,3 +54,26 @@ Here is the two commands to start and stop your docker environment:
 - *docker-compose down* -> stop docker containers
 
 From there you can find the documentation to the API at the following url: *http://localhost/api/docs*
+
+## Launching the React Frontend
+
+To start the frontend application:
+
+1. **Navigate to the Frontend Directory**: Open a terminal and navigate to the 'frontend' directory within the project.
+   ```
+   cd path-to-your-frontend-directory
+   ```
+   Replace `path-to-your-frontend-directory` with the actual path to your frontend directory.
+
+2. **Install Dependencies**: If it's your first time running the project, or if any new dependencies have been added, install them using npm:
+   ```
+   npm install
+   ```
+
+3. **Start the Frontend Application**: Run the React app using:
+   ```
+   npm start
+   ```
+   This command will start the development server, typically accessible at `http://localhost:3000`.
+
+4. **Access the Application**: Open your web browser and navigate to `http://localhost:3000` to view and interact with the frontend of your application.
