@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="23467343-4345-4e98-8e71-7cfae04fb967" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/RegisterPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/RegisterPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,9 +122,9 @@
       <path value="$PROJECT_DIR$/app/vendor/lcobucci/jwt" />
     </include_path>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2070IMvvRKUUxaRaG4tgNDQ9DZk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -131,7 +133,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "client",
+    "git-widget-placeholder": "logina",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -157,6 +159,7 @@
       <updated>1635380238403</updated>
       <workItem from="1635380240456" duration="5629000" />
       <workItem from="1705315633290" duration="664000" />
+      <workItem from="1705420447529" duration="266000" />
     </task>
     <servers />
   </component>
