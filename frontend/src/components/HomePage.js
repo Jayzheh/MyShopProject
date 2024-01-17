@@ -1,6 +1,7 @@
 import SearchBar from './searchBar';
 import React, { useEffect, useState } from 'react';
 import './HomePage.css';
+import {Link} from "react-router-dom";
 
 function HomePage() {
     const apiToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDU1MDEwNzcsImV4cCI6MTcwNTUwNDY3Nywicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFiZG91bGthbmUxMTlAZ21haWwuY29tIn0.HK7VmYoPgoJkHUKOeAbFeKEqlMcD-8YAWaE7b7GaQDSPgyydW1JHldd6zcstYd1Y9jQjHhusAX1QVNdOTgC3xNDwJ6iS34OWTHwF5a7LDNIgWr1Z2kw-YiPy5ep-oJ-H_J7iSIxQBYao95hyJkg2fqhiEfSMulnbxMRV7SmZYcbheCe6Z4Vg6iiv0S-xTS92eLXbxoTzQ7XwQHgtj_B1YZT3mgeFpOh1o9EJA4yw2tdbyyoNIsbh9W48ms4vUsWrqETEsEBMLMnKvGaxolo98L5ZtwjDC9tis_aSz3ikQC2wtdyULwGtiQ-55bdXzuEUhbEzUvO90aitiXgaiUTEUQ"; // Access environment variable
@@ -27,17 +28,18 @@ function HomePage() {
                 }
             });
 
+            // Préparation des en-têtes de la requête
+            const headers = new Headers({
+                'Content-Type': 'application/json'
+            });
+
+            // Ajouter le token JWT s'il est disponible
             const storedToken = localStorage.getItem('token');
-            if (!storedToken) {
-                throw new Error('API Token non défini');
+            if (storedToken) {
+                headers.append('Authorization', `Bearer ${storedToken}`);
             }
 
-            const response = await fetch(url, {
-                headers: {
-                    'Authorization': `Bearer ${storedToken}`,
-                    'Content-Type': 'application/json'
-                }
-            });
+            const response = await fetch(url, { headers });
 
             console.log("Response status:", response.status);
             const data = await response.json();
@@ -58,7 +60,7 @@ function HomePage() {
             setLoading(false);
         }
     };
-
+    
     const handleSearch = (searchTerm) => {
         // Modification pour utiliser uniquement le paramètre de recherche pertinent
         const searchParams = {
@@ -75,11 +77,10 @@ function HomePage() {
             {error && <p>Erreur: {error}</p>}
             <div className="products-grid">
                 {products.length > 0 ? (
-                    products.map((product, index) => (
-                        <div key={index} className="product-item">
+                    products.map((product) => (
+                        <Link to={`/products/${product.id}`} key={product.id} className="product-item">
                             <p className="product-title">{product.name}</p>
-                            {/* Ajoutez plus de détails sur le produit ici, comme une description, une image, etc. */}
-                        </div>
+                        </Link>
                     ))
                 ) : (
                     <p>Aucun produit trouvé</p>
