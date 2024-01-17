@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate(); // useNavigate instead of useHistory
+    const navigate = useNavigate();
 
     const handleLogin = () => {
-        // Authentication logic here
         if (username === 'admin' && password === 'admin') {
-            navigate('/admin'); // Use navigate to redirect
+            navigate('/admin');
         } else {
             alert('Invalid credentials');
         }
@@ -31,10 +30,14 @@ function LoginPage() {
                 onChange={(e) => setPassword(e.target.value)}
             />
             <button onClick={handleLogin}>Login</button>
+            <p>
+                Don't have an account? <a href="/register">Register here</a>
+            </p>
         </div>
     );
 }
 
 export default LoginPage;
+
 
 
