@@ -6,9 +6,14 @@ function HomePage() {
     const apiToken = process.env.REACT_APP_API_TOKEN;
     const [products, setProducts] = useState([]);
 
+    useEffect(() => {
+        // Chargement initial des produits
+        fetchProducts({});
+    }, []);
+
     const fetchProducts = async (searchParams) => {
         try {
-            const url = new URL('http://localhost/api/products');
+            const url = new URL('http://localhost:3000/api/products'); // Ajout du port 3000
 
             // Ajout des paramètres de recherche à l'URL
             Object.keys(searchParams).forEach(key => {
@@ -17,13 +22,26 @@ function HomePage() {
                 }
             });
 
+            console.log(`Fetching: ${url}`); // Pour déboguer l'URL finale
+
+            if (!apiToken) {
+                throw new Error('API Token non défini'); // Gérer le cas où le token n'est pas défini
+            }
+
             const response = await fetch(url, {
                 headers: {
-                    'Authorization': `Bearer ${apiToken}`
+                    'Authorization': `Bearer ${apiToken}`,
+                    'Content-Type': 'application/json'
                 }
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
             const data = await response.json();
+            console.log(data); // Pour déboguer la réponse de l'API
+
             if (data && data["hydra:member"]) {
                 setProducts(data["hydra:member"]);
             }
@@ -33,7 +51,8 @@ function HomePage() {
     };
 
     const handleSearch = (searchTerm) => {
-        // Exemple d'utilisation avec un seul terme de recherche
+        // Modification pour utiliser uniquement le paramètre de recherche pertinent
+        // Par exemple, ici, je ne recherche que par nom.
         const searchParams = {
             'name': searchTerm,
             'description': searchTerm,
@@ -45,6 +64,7 @@ function HomePage() {
             'price[lte]': searchTerm,
             'order[id]': searchTerm,
             'order[name]': searchTerm,
+
         };
         fetchProducts(searchParams);
     };
@@ -69,6 +89,7 @@ function HomePage() {
 }
 
 export default HomePage;
+
 
 
 
