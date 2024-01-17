@@ -27,13 +27,14 @@ function HomePage() {
                 }
             });
 
-            if (!apiToken) {
-                throw new Error('API Token non défini'); // Gérer le cas où le token n'est pas défini
+            const storedToken = localStorage.getItem('token');
+            if (!storedToken) {
+                throw new Error('API Token non défini');
             }
 
             const response = await fetch(url, {
                 headers: {
-                    'Authorization': `Bearer ${apiToken}`,
+                    'Authorization': `Bearer ${storedToken}`,
                     'Content-Type': 'application/json'
                 }
             });
