@@ -1,6 +1,7 @@
 import React, { useState } from 'react'; 
 import SearchBar from './searchBar'; 
 import './adminPage.css';
+import ProductsTable from './ProductsTable';
 
 function AdminPage() {
   const [activeMenu, setActiveMenu] = useState('Products'); // State to track active menu
@@ -12,7 +13,7 @@ function AdminPage() {
   const renderContent = () => {
     switch (activeMenu) {
       case 'Products':
-        return <div>Products Table</div>; // Replace with your Products component
+        return  <ProductsTable />; ; // Products component should render here
       case 'Categories':
         return <div>Categories Table</div>; // Replace with your Categories component
       case 'Users':
