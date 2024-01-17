@@ -5,98 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23467343-4345-4e98-8e71-7cfae04fb967" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MyShopRedo.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShop.postman_collection.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/bin/console" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/bundles.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/api_platform.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/cache.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/doctrine_migrations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/lexik_jwt_authentication.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/nelmio_cors.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/prod/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/routing.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/security.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/test/doctrine.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/test/validator.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/twig.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/validator.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/packages/vich_uploader.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/preload.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routes.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routes/annotations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routes/api_platform.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/routes/framework.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/services.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/Version20211017214007.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/Version20211017223147.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/Version20211017225958.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/Version20211025232617.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/migrations/Version20211026014113.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Command/AddUserCommand.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Controller/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Controller/CreateMediaObjectAction.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Entity/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Entity/Category.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Entity/MediaObject.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Entity/Product.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Entity/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/EventSubscriber/UserSubscriber.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Kernel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/OpenApi/JwtDecorator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Repository/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Repository/CategoryRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Repository/ProductRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Repository/UserRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Serializer/MediaObjectNormalizer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Utils/Validator.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/symfony.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/.env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/logs/nginx/.keep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/nginx/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/nginx/nginx.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/php/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/logo192.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/logo512.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/public/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.test.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/AdminPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/HomePage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/HomePage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/LoginPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductsTable.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/RegisterPage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/adminPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/searchBar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/searchBar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/reportWebVitals.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/setupTests.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +140,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging client",
+    "git-widget-placeholder": "client",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -258,7 +169,7 @@
       <workItem from="1635380240456" duration="5629000" />
       <workItem from="1705315633290" duration="2117000" />
       <workItem from="1705419295260" duration="8030000" />
-      <workItem from="1705482804919" duration="17512000" />
+      <workItem from="1705482804919" duration="18009000" />
     </task>
     <servers />
   </component>
