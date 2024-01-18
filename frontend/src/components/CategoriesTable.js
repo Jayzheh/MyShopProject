@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import './Table.css';
 
-//const jwtToken = process.env.REACT_APP_JWT_TOKEN;
-const jwtToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDU1Njg5NzEsImV4cCI6MTcwNTU3MjU3MSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImRhbkBkYW4uZGFuIn0.PYNMle6J6rvLUDWA9eG48LXXhBxoVTQo-LqhgRHjiiscGxQQXwKNKBX3K4-RF4TedlCfnwOkuWZB2h5HqXQSV5lUe6-wBlayRLb3UZtQjbs0d16SwIJBZTfMmcUabsFityFbAbQoPAmOl6ysSkY1WCwH3zkSOCGPrz9tTtuw-CrnFPtOjP69lgpY7D5wy-_QZgMn1_6-tXEVCWlunIUIzB1ve_1pRjrha7qzbn58dyKE9ZJJtT1R7ou5auiYGD0mMpvg_H2QO5owcIH4OCdK6HuyeAyJY7HavkqtPtjOmck7HljSSGNryj1128CyjXSP2ZYSI0SH7qnCuwyjzcqC1A';
-
 function CategoriesTable() {
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
+        // Retrieve the JWT token from local storage
+        const jwtToken = localStorage.getItem('jwtToken'); // Replace 'token' with whatever you
+
+         // Debugging failsafe
+         console.log("Retrieved JWT Token:", jwtToken);
+
+
         fetch('http://localhost/api/categories', {
             headers: {
                 Authorization: `Bearer ${jwtToken}`
@@ -27,10 +31,34 @@ function CategoriesTable() {
         // Implement edit functionality
     };
 
+    //DELETE CATEGORY
     const handleDelete = (categoryId) => {
-        // Implement delete functionality
+        // Confirmation dialog
+        if (window.confirm("Are you sure you want to delete this category?")) {
+            // User confirmed deletion
+            const jwtToken = localStorage.getItem('jwtToken'); // Change key name if needed
+    
+            fetch(`http://localhost/api/categories/${categoryId}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: `Bearer ${jwtToken}`
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Remove the deleted category from the state
+                    setCategories(categories.filter(category => category.id !== categoryId));
+                } else {
+                    console.error('Error deleting category:', response);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        } else {
+            // User canceled deletion
+            console.log("Deletion cancelled");
+        }
     };
-
+    
     return (
         <div>
             <h2>Categories</h2>
@@ -60,5 +88,3 @@ function CategoriesTable() {
 }
 
 export default CategoriesTable;
-
-
