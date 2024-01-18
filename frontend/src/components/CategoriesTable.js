@@ -3,19 +3,15 @@ import './Table.css';
 
 function CategoriesTable() {
     const [categories, setCategories] = useState([]);
+    const [editingCategoryId, setEditingCategoryId] = useState(null);
+    const [editFormData, setEditFormData] = useState({ name: '' });
 
     useEffect(() => {
-        // Retrieve the JWT token from local storage
-        const jwtToken = localStorage.getItem('jwtToken'); // Replace 'token' with whatever you
-
-         // Debugging failsafe
-         console.log("Retrieved JWT Token:", jwtToken);
-
+        const jwtToken = localStorage.getItem('jwtToken');
+        console.log("Retrieved JWT Token:", jwtToken);
 
         fetch('http://localhost/api/categories', {
-            headers: {
-                Authorization: `Bearer ${jwtToken}`
-            }
+            headers: { Authorization: `Bearer ${jwtToken}` }
         })
         .then(response => response.json())
         .then(data => {
@@ -26,39 +22,60 @@ function CategoriesTable() {
         .catch(error => console.error('Error fetching categories:', error));
     }, []);
 
-    // Placeholder functions for edit and delete actions
     const startEdit = (category) => {
-        // Implement edit functionality
+        setEditingCategoryId(category.id);
+        setEditFormData({ name: category.name });
     };
 
-    //DELETE CATEGORY
+    const handleEditFormChange = (event) => {
+        setEditFormData({ ...editFormData, name: event.target.value });
+    };
+
+    const handleEditSubmit = (categoryId) => {
+        const jwtToken = localStorage.getItem('jwtToken');
+        fetch(`http://localhost/api/categories/${categoryId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${jwtToken}`
+            },
+            body: JSON.stringify(editFormData)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(updatedCategory => {
+            setCategories(categories.map(category => category.id === categoryId ? updatedCategory : category));
+            setEditingCategoryId(null);
+        })
+        .catch(error => console.error('Error updating category:', error));
+    };
+
     const handleDelete = (categoryId) => {
-        // Confirmation dialog
         if (window.confirm("Are you sure you want to delete this category?")) {
-            // User confirmed deletion
-            const jwtToken = localStorage.getItem('jwtToken'); // Change key name if needed
-    
+            const jwtToken = localStorage.getItem('jwtToken');
             fetch(`http://localhost/api/categories/${categoryId}`, {
                 method: 'DELETE',
-                headers: {
-                    Authorization: `Bearer ${jwtToken}`
-                }
+                headers: { Authorization: `Bearer ${jwtToken}` }
             })
             .then(response => {
                 if (response.ok) {
-                    // Remove the deleted category from the state
                     setCategories(categories.filter(category => category.id !== categoryId));
                 } else {
                     console.error('Error deleting category:', response);
                 }
             })
             .catch(error => console.error('Error:', error));
-        } else {
-            // User canceled deletion
-            console.log("Deletion cancelled");
         }
     };
-    
+
+    const cancelEdit = () => {
+        setEditingCategoryId(null);
+    };
+
     return (
         <div>
             <h2>Categories</h2>
@@ -74,10 +91,30 @@ function CategoriesTable() {
                     {categories.map(category => (
                         <tr key={category.id}>
                             <td>{category.id}</td>
-                            <td>{category.name}</td>
                             <td>
-                                <button className="edit-button" onClick={() => startEdit(category)}>Edit</button>
-                                <button onClick={() => handleDelete(category.id)}>Delete</button>
+                                {editingCategoryId === category.id ? (
+                                    <input 
+                                        type="text"
+                                        name="name"
+                                        value={editFormData.name}
+                                        onChange={handleEditFormChange}
+                                    />
+                                ) : (
+                                    category.name
+                                )}
+                            </td>
+                            <td>
+                                {editingCategoryId === category.id ? (
+                                    <>
+                                        <button onClick={() => handleEditSubmit(category.id)}>Save</button>
+                                        <button onClick={cancelEdit}>Cancel</button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <button className="edit-button" onClick={() => startEdit(category)}>Edit</button>
+                                        <button onClick={() => handleDelete(category.id)}>Delete</button>
+                                    </>
+                                )}
                             </td>
                         </tr>
                     ))}
