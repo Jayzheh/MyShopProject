@@ -11,14 +11,19 @@ function ProductDetails() {
         const fetchProduct = async () => {
             setLoading(true);
             try {
-                const response = await fetch(`http://localhost/api/products/${productId}`, {
-                    headers: {
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
-                        'Content-Type': 'application/json'
-                    }
+                const headers = new Headers({
+                    'Content-Type': 'application/json'
                 });
 
+                // Ajouter le token JWT seulement s'il est disponible
+                const storedToken = localStorage.getItem('token');
+                if (storedToken) {
+                    headers.append('Authorization', `Bearer ${storedToken}`);
+                }
+
+                const response = await fetch(`http://localhost/api/products/${productId}`, { headers });
                 const data = await response.json();
+
                 if (!response.ok) {
                     throw new Error(data.message || 'Could not fetch product');
                 }
@@ -43,6 +48,7 @@ function ProductDetails() {
                     <h1>{product.name}</h1>
                     <p>{product.description}</p>
                     <p>{product.price}</p>
+                    <p>{product.categories}</p>
                     {/* Afficher plus de détails si nécessaire */}
                 </div>
             )}
@@ -51,3 +57,4 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
+

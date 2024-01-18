@@ -60,7 +60,7 @@ function HomePage() {
             setLoading(false);
         }
     };
-    
+
     const handleSearch = (searchTerm) => {
         // Modification pour utiliser uniquement le paramètre de recherche pertinent
         const searchParams = {
