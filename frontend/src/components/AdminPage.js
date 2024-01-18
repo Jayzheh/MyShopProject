@@ -3,6 +3,7 @@ import SearchBar from './searchBar';
 import './adminPage.css';
 import ProductsTable from './ProductsTable';
 import CategoriesTable from './CategoriesTable';
+import UsersTable from './UsersTable';
 
 function AdminPage() {
   const [activeMenu, setActiveMenu] = useState('Products'); // State to track active menu
@@ -18,9 +19,9 @@ function AdminPage() {
       case 'Categories':
         return <CategoriesTable /> ; // Replace with your Categories component
       case 'Users':
-        return <div>Users Table</div>; // Replace with your Users component
+        return <UsersTable />; // Replace with your Users component
       default:
-        return <div>Products Table</div>;
+        return <ProductsTable />;
     }
   };
 
