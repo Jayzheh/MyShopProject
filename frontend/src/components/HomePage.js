@@ -4,7 +4,7 @@ import './HomePage.css';
 import {Link} from "react-router-dom";
 
 function HomePage() {
-    const apiToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDU1MDEwNzcsImV4cCI6MTcwNTUwNDY3Nywicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImFiZG91bGthbmUxMTlAZ21haWwuY29tIn0.HK7VmYoPgoJkHUKOeAbFeKEqlMcD-8YAWaE7b7GaQDSPgyydW1JHldd6zcstYd1Y9jQjHhusAX1QVNdOTgC3xNDwJ6iS34OWTHwF5a7LDNIgWr1Z2kw-YiPy5ep-oJ-H_J7iSIxQBYao95hyJkg2fqhiEfSMulnbxMRV7SmZYcbheCe6Z4Vg6iiv0S-xTS92eLXbxoTzQ7XwQHgtj_B1YZT3mgeFpOh1o9EJA4yw2tdbyyoNIsbh9W48ms4vUsWrqETEsEBMLMnKvGaxolo98L5ZtwjDC9tis_aSz3ikQC2wtdyULwGtiQ-55bdXzuEUhbEzUvO90aitiXgaiUTEUQ"; // Access environment variable
+    const apiToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDU1NzU2ODAsImV4cCI6MTcwNTU3OTI4MCwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImRhbkBkYW4uZGFuIn0.fUFrU5Q7zbsbpxjcffnXlitu49lwPk40uxlWsbN9xmmM48HYfE8wC35GDmFUvAoxlTH9AvG5Gprya-MpPbb33nlOSwsRaZ2QdMCTPr67RA6Y5JPnQfRvRKmjg5gQdgXO1z0aJ2PLqYz0CqWToYWj1cqggPPuDoJoEu2eojDxvS7ynv3UwaRl3bFqUCS34mnw5qtQgKzL-AD0FU9o23evVyaNGYOR36vzP9ybzQI4sqYhqaBdv5hqowsZG2ckgkOlRNoakrAN6Ym7EfPwRzvCouJPcfRXOIw8t6idefl-j54sRtklxNM7uMf6H0mBE66aDgi6kXvzZ_4hhIsMCMnfCw"; // Access environment variable
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);

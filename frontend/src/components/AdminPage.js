@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SearchBar from './searchBar'; 
 import './adminPage.css';
 import ProductsTable from './ProductsTable';
+import CategoriesTable from './CategoriesTable';
 
 function AdminPage() {
   const [activeMenu, setActiveMenu] = useState('Products'); // State to track active menu
@@ -15,7 +16,7 @@ function AdminPage() {
       case 'Products':
         return  <ProductsTable />; ; // Products component should render here
       case 'Categories':
-        return <div>Categories Table</div>; // Replace with your Categories component
+        return <CategoriesTable /> ; // Replace with your Categories component
       case 'Users':
         return <div>Users Table</div>; // Replace with your Users component
       default:
