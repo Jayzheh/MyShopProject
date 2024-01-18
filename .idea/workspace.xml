@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23467343-4345-4e98-8e71-7cfae04fb967" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/LoginPage.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/ProductDetails.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/components/RegisterPage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/LoginPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/ProductDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/ProductDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/RegisterPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/RegisterPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/searchBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/searchBar.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +171,7 @@
       <workItem from="1705482804919" duration="18107000" />
       <workItem from="1705524209206" duration="5898000" />
       <workItem from="1705568779419" duration="1222000" />
-      <workItem from="1705570556870" duration="10265000" />
+      <workItem from="1705570556870" duration="11134000" />
     </task>
     <servers />
   </component>

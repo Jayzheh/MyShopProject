@@ -2,7 +2,7 @@
 .search-bar-container {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* This will space out the main children elements */
+  justify-content: space-between;
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -11,18 +11,19 @@
 .logo-and-title {
   display: flex;
   align-items: center;
+  margin-right: 20px; /* Ajoute un peu d'espace entre le titre et le champ de recherche */
 }
 
 .logo {
   height: auto;
   width: 100px;
   object-fit: contain;
+  margin-right: 10px; /* Ajustez si nécessaire pour l'espace entre le logo et le titre */
 }
 
 .shop-title {
   font-size: 1.5em;
   color: #333;
-  margin-left: 10px;
   font-weight: bold;
 }
 
@@ -30,7 +31,7 @@
   display: flex;
   justify-content: center;
   flex-grow: 2;
-  margin-right: 20px; /* Add some margin to the right of the search form */
+  margin-right: 20px; /* Espacement à droite du formulaire de recherche */
 }
 
 .search-input {
@@ -39,7 +40,7 @@
   border: 1px solid #ccc;
   border-radius: 20px;
   width: 100%;
-  margin-right: 20px; /* Add some margin to the right of the search input */
+  margin-right: 20px; /* Espacement à droite de l'entrée de recherche */
 }
 
 .login-button {
@@ -57,13 +58,11 @@
   transform: translateY(-2px);
 }
 
-/* Adjustments for spacing */
-.search-bar-right-items {
-  display: flex;
-  align-items: center;
-  /* Add spacing between items */
-  gap: 20px; /* You can adjust the gap as needed */
+/* Si vous avez un bouton de recherche séparé, vous pouvez ajouter ceci */
+.search-button {
+  margin-left: 10px; /* Espacement à gauche du bouton de recherche */
 }
+
 
 
   
