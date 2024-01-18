@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './searchBar.css';
+import logo from '../images/myshop_logo.png';
 
 const SearchBar = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -41,7 +42,7 @@ const SearchBar = ({ onSearch }) => {
     return (
         <div className="search-bar-container">
             <div className="logo-and-title">
-                <img src="path_to_your_logo.png" alt="Logo" className="logo" />
+                <img src={logo} alt="Logo" className="logo" />
                 <span className="shop-title">MyShop</span>
             </div>
             <form onSubmit={handleSubmit} className="search-form">
