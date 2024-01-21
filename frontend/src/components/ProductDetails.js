@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import './ProductDetails.css';
 
 function ProductDetails() {
     const { productId } = useParams();
@@ -15,7 +16,6 @@ function ProductDetails() {
                     'Content-Type': 'application/json'
                 });
 
-                // Ajouter le token JWT seulement s'il est disponible
                 const storedToken = localStorage.getItem('token');
                 if (storedToken) {
                     headers.append('Authorization', `Bearer ${storedToken}`);
@@ -42,14 +42,14 @@ function ProductDetails() {
     if (error) return <p>Erreur: {error}</p>;
 
     return (
-        <div>
+        <div className="product-details-container">
             {product && (
                 <div>
                     <h1>{product.name}</h1>
+                    {product.image && <img src={product.image} alt={product.name} className="product-image" />}
+                    <p className="product-price">Price: ${product.price}</p>
                     <p>{product.description}</p>
-                    <p>{product.price}</p>
-                    <p>{product.categories}</p>
-                    {/* Afficher plus de détails si nécessaire */}
+                    {/* Autres détails du produit */}
                 </div>
             )}
         </div>
@@ -57,4 +57,7 @@ function ProductDetails() {
 }
 
 export default ProductDetails;
+
+
+
 

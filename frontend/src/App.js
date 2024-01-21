@@ -15,9 +15,9 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<HomePage />} /> {/* Abdoul Page */}
-          <Route path="/products/:productId" element={<ProductDetails />} />
-          <Route path="/login" element={<LoginPage />} /> {/* Amaury Page */}
-          <Route path="/register" element={<RegisterPage />} /> {/* Amaury Page */}
+          <Route path="/products/:productId" element={<ProductDetails />} /> {/* Abdoul Page */}
+          <Route path="/login" element={<LoginPage />} /> {/* Abdoul et Dan Page */}
+          <Route path="/register" element={<RegisterPage />} /> {/* Abdoul et Dan Page */}
           <Route path="/admin" element={<AdminPage />} /> {/* Dan Page */}
           {/* Add other routes here as needed */}
         </Routes>

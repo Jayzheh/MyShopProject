@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './LoginPage.css';
+
 
 function LoginPage() {
     const [email, setEmail] = useState('');
@@ -8,9 +10,6 @@ function LoginPage() {
 
     const handleLogin = async () => {
         try {
-            // Ici, vous devriez envoyer une requête à votre backend pour vérifier les identifiants
-            // Cette requête retournera probablement le token JWT que vous devez utiliser pour les requêtes authentifiées
-            // Exemple de structure de requête - ajustez en fonction de votre backend
             const response = await fetch('http://localhost/authentication_token', {
                 method: 'POST',
                 headers: {
@@ -22,10 +21,7 @@ function LoginPage() {
             const data = await response.json();
 
             if (response.ok) {
-                // Stocker le token JWT pour une utilisation future
-                localStorage.setItem('token', data.token); // Ajustez en fonction de la structure de réponse de votre API
-
-                // Rediriger l'utilisateur
+                localStorage.setItem('token', data.token);
                 navigate('/admin');
             } else {
                 alert(data.message || 'Invalid credentials');
