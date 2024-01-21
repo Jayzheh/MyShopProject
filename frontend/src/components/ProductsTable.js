@@ -14,7 +14,16 @@ function ProductsTable() {
     categories: [],
   });
 
+  // Add a new state to control whether the add product form is open
+  const [isAddProductFormOpen, setIsAddProductFormOpen] = useState(false);
+
+  // Define a state to hold the available categories
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [categoryMapping, setCategoryMapping] = useState({});
+
   useEffect(() => {
+    // Fetch products from the API
     fetch('http://localhost/api/products')
       .then((response) => response.json())
       .then((data) => {
@@ -23,6 +32,30 @@ function ProductsTable() {
         }
       })
       .catch((error) => console.error('Error fetching products:', error));
+
+    // Fetch categories from the API
+    fetch('http://localhost/api/categories', {
+      headers: {
+        'Authorization': `Bearer ${jwtToken}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data['hydra:member']) {
+        setCategories(data['hydra:member']);
+        console.log('Fetched Categories:', data['hydra:member']);
+  
+        // Create a mapping from category ID to name
+        const newCategoryMapping = {};
+        data['hydra:member'].forEach(category => {
+          newCategoryMapping[category.id] = category.name;
+        });
+        setCategoryMapping(newCategoryMapping);
+        console.log('Fetched Categories Table', data['hydra:member']);
+      }
+    })
+    .catch((error) => console.error('Error fetching categories:', error));
   }, []);
 
   const getCategoryID = (categoryIRI) => {
@@ -53,30 +86,136 @@ function ProductsTable() {
       price: parseInt(editFormData.price, 10),
     };
 
-    axios.put(`http://localhost/api/products/${editingProductId}`, updatedProduct, {
+    axios
+      .put(`http://localhost/api/products/${editingProductId}`, updatedProduct, {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
           'Content-Type': 'application/json',
         },
-    })
-    .then((response) => {
-      setProducts(products.map((product) => 
-        product.id === editingProductId ? { ...response.data } : product
-      ));
-      setEditingProductId(null);
-    })
-    .catch((error) => {
-      console.error('Error updating product:', error);
-    });
+      })
+      .then((response) => {
+        setProducts((prevProducts) =>
+          prevProducts.map((product) =>
+            product.id === editingProductId ? { ...response.data } : product
+          )
+        );
+        setEditingProductId(null);
+      })
+      .catch((error) => {
+        console.error('Error updating product:', error);
+      });
   };
 
   const handleCancel = () => {
     setEditingProductId(null);
   };
 
+  // ADD PRODUCT
+  const handleAddNewClick = () => {
+    // Open the add product form when "Add New" is clicked
+    setIsAddProductFormOpen(true);
+  };
+
+  //CREATE NEW PRODUCT 
+  const handleAddProductSubmit = () => {
+    const newProduct = {
+      ...editFormData,
+      price: parseInt(editFormData.price, 10),
+      categories: [selectedCategory], // Include the selected category
+    };
+
+    axios
+      .post('http://localhost/api/products', newProduct, {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((response) => {
+        setProducts((prevProducts) => [...prevProducts, response.data]);
+        // Reset the form data or close the form
+        setEditFormData({
+          name: '',
+          description: '',
+          price: '',
+          categories: [],
+        });
+        // Close the add product form
+        setIsAddProductFormOpen(false);
+      })
+      .catch((error) => {
+        console.error('Error adding new product:', error);
+      });
+  };
+
+  const handleCategoryChange = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const handleCancelAdd = () => {
+    // Reset the form data or close the form
+    setEditFormData({
+      name: '',
+      description: '',
+      price: '',
+      categories: [],
+    });
+    // Close the add product form
+    setIsAddProductFormOpen(false);
+  };
+
   return (
     <div>
       <h2>Products</h2>
+      <button className='addNew-button' onClick={handleAddNewClick}>Add New</button>
+
+      {isAddProductFormOpen && (
+        <div>
+          {/* FORM TO ADD STUFF */}
+          <h3>Add Product</h3>
+          <div>
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={editFormData.name}
+              onChange={handleEditFormChange}
+            />
+          </div>
+          <div>
+            <label>Description:</label>
+            <input
+              type="text"
+              name="description"
+              value={editFormData.description}
+              onChange={handleEditFormChange}
+            />
+          </div>
+          <div>
+            <label>Price:</label>
+            <input
+              type="number"
+              name="price"
+              value={editFormData.price}
+              onChange={handleEditFormChange}
+            />
+          </div>
+          <div>
+            <label>Select a Category:</label>
+            <select value={selectedCategory} onChange={handleCategoryChange}>
+              <option value="">Select a category</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category['@id']}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button onClick={handleAddProductSubmit}>Add Product</button>
+          <button onClick={handleCancelAdd}>Cancel</button>
+        </div>
+      )}
+
       <table className="products-table">
         <thead>
           <tr>
@@ -93,16 +232,42 @@ function ProductsTable() {
             <tr key={product.id}>
               <td>{product.id}</td>
               {editingProductId === product.id ? (
-                // Editable fields
                 <>
-                  <td><input type="text" name="name" value={editFormData.name} onChange={handleEditFormChange} /></td>
-                  <td><input type="text" name="description" value={editFormData.description} onChange={handleEditFormChange} /></td>
-                  <td><input type="number" name="price" value={editFormData.price} onChange={handleEditFormChange} /></td>
                   <td>
-                    {/* You can also make categories editable if needed */}
-                    {product.categories.map((category, idx) => (
-                      <span key={idx}>{getCategoryID(category)}{idx < product.categories.length - 1 ? ', ' : ''}</span>
-                    ))}
+                    <input
+                      type="text"
+                      name="name"
+                      value={editFormData.name}
+                      onChange={handleEditFormChange}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      name="description"
+                      value={editFormData.description}
+                      onChange={handleEditFormChange}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      name="price"
+                      value={editFormData.price}
+                      onChange={handleEditFormChange}
+                    />
+                  </td>
+                  <td>
+                  {product.categories.map((categoryIRI, idx) => {
+                    const categoryId = getCategoryID(categoryIRI);
+                    const categoryName = categoryMapping[categoryId] || 'Unknown Category'; // Use the mapping
+                    return (
+                    <span key={idx}>
+                      {categoryName}
+                      {idx < product.categories.length - 1 ? ', ' : ''}
+                      </span>
+                      );
+                      })}
                   </td>
                   <td>
                     <button onClick={handleEditFormSubmit}>Save</button>
@@ -116,12 +281,24 @@ function ProductsTable() {
                   <td>{product.description}</td>
                   <td>{product.price}</td>
                   <td>
-                    {product.categories.map((category, idx) => (
-                      <span key={idx}>{getCategoryID(category)}{idx < product.categories.length - 1 ? ', ' : ''}</span>
-                    ))}
+                  {product.categories.map((categoryIRI, idx) => {
+                    const categoryId = getCategoryID(categoryIRI);
+                    const categoryName = categoryMapping[categoryId] || 'Unknown Category'; // Use the mapping
+                    return (
+                    <span key={idx}>
+                      {categoryName}
+                      {idx < product.categories.length - 1 ? ', ' : ''}
+                      </span>
+                      );
+                      })}
                   </td>
                   <td>
-                    <button className="edit-button" onClick={() => startEdit(product)}>Edit</button>
+                    <button
+                      className="edit-button"
+                      onClick={() => startEdit(product)}
+                    >
+                      Edit
+                    </button>
                     <button>Delete</button>
                   </td>
                 </>
@@ -135,6 +312,7 @@ function ProductsTable() {
 }
 
 export default ProductsTable;
+
 
 
 

@@ -13,3 +13,13 @@
   .edit-button {
     margin-right: 10px;
   }
+
+  .addNew-button {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    border-color: blue;
+    text-transform: uppercase;
+    color: blue;
+  }
