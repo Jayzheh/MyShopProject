@@ -7,17 +7,21 @@ function LoginPage() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    // Declare jwtToken and initialize it with the token from localStorage
-    const jwtToken = localStorage.getItem('jwtToken');
-    console.log('jwtToken:', jwtToken);
-
     const handleLogin = () => {
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+
+        // Check if jwtToken exists in localStorage
+        const jwtToken = localStorage.getItem('jwtToken');
+        console.log('jwtToken:', jwtToken);
+        if (jwtToken) {
+            headers['Authorization'] = `Bearer ${jwtToken}`;
+        }
+
         fetch('http://localhost/authentication_token', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${jwtToken}`, // Add jwtToken to headers
-            },
+            headers: headers,
             body: JSON.stringify({ email, password }),
         })
         .then(response => {
@@ -61,7 +65,6 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
 
 
 
