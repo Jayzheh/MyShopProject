@@ -1,4 +1,5 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; 
 import SearchBar from './searchBar'; 
 import './adminPage.css';
 import ProductsTable from './ProductsTable';
@@ -35,6 +36,9 @@ function AdminPage() {
         <button onClick={() => setActiveMenu('Users')}>Users</button>
       </div>
       {renderContent()}
+      <Link to="/"> 
+        <button className='homeButton'>Home</button>
+      </Link>
     </div>
   );
 }

@@ -9,4 +9,13 @@
     padding: 10px;
     cursor: pointer;
   }
+
+  .homeButton {
+    padding: 10px;
+    margin: 10px;
+    background-color: transparent;
+    border-color: black;
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
   

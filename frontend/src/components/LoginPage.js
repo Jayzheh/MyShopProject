@@ -2,33 +2,39 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
 
-
 function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleLogin = async () => {
-        try {
-            const response = await fetch('http://localhost/authentication_token', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
+    // Declare jwtToken and initialize it with the token from localStorage
+    const jwtToken = localStorage.getItem('jwtToken');
+    console.log('jwtToken:', jwtToken);
 
-            const data = await response.json();
-
-            if (response.ok) {
-                localStorage.setItem('token', data.token);
-                navigate('/admin');
-            } else {
-                alert(data.message || 'Invalid credentials');
+    const handleLogin = () => {
+        fetch('http://localhost/authentication_token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwtToken}`, // Add jwtToken to headers
+            },
+            body: JSON.stringify({ email, password }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        } catch (error) {
+            return response.json();
+        })
+        .then(data => {
+            localStorage.setItem('jwtToken', data.jwtToken);
+
+            // Use jwtToken here
+            navigate('/admin');
+        })
+        .catch(error => {
             alert('Login failed: ' + error.message);
-        }
+        });
     };
 
     return (
@@ -55,6 +61,9 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
+
+
 
 
 
