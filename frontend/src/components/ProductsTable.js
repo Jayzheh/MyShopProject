@@ -164,6 +164,25 @@ function ProductsTable() {
     setIsAddProductFormOpen(false);
   };
 
+    // Function to handle product deletion
+    const handleDelete = (productId) => {
+      axios
+        .delete(`http://localhost/api/products/${productId}`, {
+          headers: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        })
+        .then(() => {
+          // Remove the deleted product from the list
+          setProducts((prevProducts) =>
+            prevProducts.filter((product) => product.id !== productId)
+          );
+        })
+        .catch((error) => {
+          console.error('Error deleting product:', error);
+        });
+    };
+
   return (
     <div>
       <h2>Products</h2>
@@ -299,7 +318,7 @@ function ProductsTable() {
                     >
                       Edit
                     </button>
-                    <button>Delete</button>
+                    <button onClick={() => handleDelete(product.id)}>Delete</button>
                   </td>
                 </>
               )}
