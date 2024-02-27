@@ -1,0 +1,25 @@
+/*CSS for Tables*/
+.products-table {
+    margin: auto; /* Centers the table */
+    border-collapse: collapse; /* For cleaner borders */
+  }
+  
+  .products-table th,
+  .products-table td {
+    border: 1px solid black; /* Adds border to each cell */
+    padding: 8px; /* Optional: adds padding inside cells */
+  }
+ 
+  .edit-button {
+    margin-right: 10px;
+  }
+
+  .addNew-button {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+    border-color: blue;
+    text-transform: uppercase;
+    color: blue;
+  }

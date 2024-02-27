@@ -16,6 +16,14 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -120,30 +128,32 @@
       <path value="$PROJECT_DIR$/app/vendor/lcobucci/jwt" />
     </include_path>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2070IMvvRKUUxaRaG4tgNDQ9DZk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "client",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;client&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/docker/logs/nginx" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/frontend/src/components" />
+      <recent name="$PROJECT_DIR$/docker/logs/nginx" />
       <recent name="$PROJECT_DIR$/app" />
     </key>
   </component>
@@ -156,7 +166,15 @@
       <option name="presentableId" value="Default" />
       <updated>1635380238403</updated>
       <workItem from="1635380240456" duration="5629000" />
-      <workItem from="1705315633290" duration="664000" />
+      <workItem from="1705315633290" duration="2117000" />
+      <workItem from="1705419295260" duration="8030000" />
+      <workItem from="1705482804919" duration="18107000" />
+      <workItem from="1705524209206" duration="5898000" />
+      <workItem from="1705568779419" duration="1222000" />
+      <workItem from="1705570556870" duration="11607000" />
+      <workItem from="1705590620765" duration="361000" />
+      <workItem from="1705740487171" duration="511000" />
+      <workItem from="1705751074924" duration="2664000" />
     </task>
     <servers />
   </component>
