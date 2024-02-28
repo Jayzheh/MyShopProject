@@ -12,33 +12,26 @@ function LoginPage() {
             'Content-Type': 'application/json',
         };
 
-        // Check if jwtToken exists in localStorage
-        const jwtToken = localStorage.getItem('jwtToken');
-        console.log('jwtToken:', jwtToken);
-        if (jwtToken) {
-            headers['Authorization'] = `Bearer ${jwtToken}`;
-        }
-
         fetch('http://localhost/authentication_token', {
             method: 'POST',
             headers: headers,
             body: JSON.stringify({ email, password }),
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            localStorage.setItem('jwtToken', data.jwtToken);
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const token = data.token;
+                localStorage.setItem('jwtToken', token);
 
-            // Use jwtToken here
-            navigate('/admin');
-        })
-        .catch(error => {
-            alert('Login failed: ' + error.message);
-        });
+                navigate('/admin');
+            })
+            .catch(error => {
+                alert('Login failed: ' + error.message);
+            });
     };
 
     return (
@@ -65,6 +58,7 @@ function LoginPage() {
 }
 
 export default LoginPage;
+
 
 
 
