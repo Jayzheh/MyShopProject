@@ -70,7 +70,7 @@ const SearchBar = ({ onSearch }) => {
                     placeholder="Search..."
                     className="search-input"
                 />
-                <button className="search-button" type="submit">Search</button>
+                {/* <button className="search-button" type="submit">Search</button> */}
             </form>
             <button onClick={handleAuthClick} className="login-button">
                 {loggedIn ? 'Logout' : 'Login'}
