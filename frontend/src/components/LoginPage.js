@@ -51,7 +51,7 @@ function LoginPage() {
             />
             <button onClick={handleLogin}>Login</button>
             <p>
-                Don't have an account? <a href="/RegisterPage">Register here</a>
+                Don't have an account? <a href="/register">Register here</a>
             </p>
         </div>
     );
