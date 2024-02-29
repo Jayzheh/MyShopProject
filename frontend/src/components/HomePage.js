@@ -55,6 +55,7 @@ function HomePage() {
                 setProducts([]);
             }
         } catch (error) {
+            console.error("Error fetching products:", error); 
             setError(error.message);
         } finally {
             setLoading(false);
@@ -62,6 +63,7 @@ function HomePage() {
     };
 
     const handleSearch = (searchTerm) => {
+        console.log("Search Term in handleSearch:", searchTerm);
         // Modification pour utiliser uniquement le paramètre de recherche pertinent
         const searchParams = {
             'name': searchTerm
