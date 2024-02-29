@@ -16,8 +16,10 @@ function RegisterPage() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                email: "abdoulkane119@gmail.com",
-                password: "Kyrie2000",
+                email: "azerty@aerty.com",
+                password: "azerty",
+                //"abdoulkane119@gmail.com",
+                //"Kyrie2000",
             }),
         })
             .then(response => {
