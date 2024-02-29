@@ -6,6 +6,22 @@ import logo from '../images/myshop_logo.png';
 const SearchBar = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const navigate = useNavigate();
+    const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
+
+    //Debouncing to reduce excissive API calls 
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setDebouncedTerm(searchTerm);
+        }, 300); 
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [searchTerm]);
+
+    useEffect(() => {
+        onSearch(debouncedTerm);
+    }, [debouncedTerm]);
 
     // Fonction pour vérifier utilisateur connecté
     const isUserLoggedIn = () => {
@@ -22,6 +38,7 @@ const SearchBar = ({ onSearch }) => {
 
     const handleInputChange = (e) => {
         setSearchTerm(e.target.value);
+        onSearch(e.target.value);
     };
 
     const handleSubmit = (e) => {

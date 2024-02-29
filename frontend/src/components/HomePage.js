@@ -4,7 +4,6 @@ import './HomePage.css';
 import {Link} from "react-router-dom";
 
 function HomePage() {
-    const apiToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDU1NzU2ODAsImV4cCI6MTcwNTU3OTI4MCwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImRhbkBkYW4uZGFuIn0.fUFrU5Q7zbsbpxjcffnXlitu49lwPk40uxlWsbN9xmmM48HYfE8wC35GDmFUvAoxlTH9AvG5Gprya-MpPbb33nlOSwsRaZ2QdMCTPr67RA6Y5JPnQfRvRKmjg5gQdgXO1z0aJ2PLqYz0CqWToYWj1cqggPPuDoJoEu2eojDxvS7ynv3UwaRl3bFqUCS34mnw5qtQgKzL-AD0FU9o23evVyaNGYOR36vzP9ybzQI4sqYhqaBdv5hqowsZG2ckgkOlRNoakrAN6Ym7EfPwRzvCouJPcfRXOIw8t6idefl-j54sRtklxNM7uMf6H0mBE66aDgi6kXvzZ_4hhIsMCMnfCw"; // Access environment variable
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -65,9 +64,7 @@ function HomePage() {
     const handleSearch = (searchTerm) => {
         console.log("Search Term in handleSearch:", searchTerm);
         // Modification pour utiliser uniquement le paramètre de recherche pertinent
-        const searchParams = {
-            'name': searchTerm
-        };
+        const searchParams = searchTerm ? { 'name': searchTerm } : {};
         fetchProducts(searchParams);
     };
 
