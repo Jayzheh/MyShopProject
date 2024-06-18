@@ -19,7 +19,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} /> {/* Abdoul et Dan Page */}
           <Route path="/register" element={<RegisterPage />} /> {/* Abdoul et Dan Page */}
           <Route path="/admin" element={<AdminPage />} /> {/* Dan Page */}
-          {/* Add other routes here as needed */}
+  
         </Routes>
       </div>
     </Router>

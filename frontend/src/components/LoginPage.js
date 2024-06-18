@@ -27,12 +27,19 @@ function LoginPage() {
                 const token = data.token;
                 localStorage.setItem('jwtToken', token);
 
+                console.log('Token stored:', token);
                 navigate('/admin');
             })
             .catch(error => {
                 alert('Login failed: ' + error.message);
             });
     };
+
+    // Debug DAN Additional useEffect to check local storage and log it
+    React.useEffect(() => {
+        const storedToken = localStorage.getItem('jwtToken');
+        console.log('JWT Token in localStorage:', storedToken);
+    }, []);
 
     return (
         <div className="login-container">

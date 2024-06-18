@@ -31,10 +31,18 @@ const SearchBar = ({ onSearch }) => {
     //Trace état de connexion de l'utilisateur
     const [loggedIn, setLoggedIn] = useState(isUserLoggedIn());
 
+    //Adjusted by Dan to track login state 
     useEffect(() => {
-        // Mise à jour de l'état de connexion
-        setLoggedIn(isUserLoggedIn());
-    });
+        const handleStorageChange = () => {
+            setLoggedIn(isUserLoggedIn());
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []);
 
     const handleInputChange = (e) => {
         setSearchTerm(e.target.value);
@@ -48,13 +56,19 @@ const SearchBar = ({ onSearch }) => {
 
     const handleAuthClick = () => {
         if (loggedIn) {
-            localStorage.removeItem('token'); // Supprimer le token pour se déconnecter
+            localStorage.removeItem('token'); 
             setLoggedIn(false);
-            navigate('/'); // Rediriger vers la page d'accueil
+            navigate('/'); 
         } else {
-            navigate('/login'); // Naviguer vers la page de connexion
+            navigate('/login'); 
         }
     };
+
+    // DAN HERE Debug to check token state and button state
+    useEffect(() => {
+        console.log('LoggedIn state:', loggedIn);
+        console.log('JWT Token:', localStorage.getItem('jwtToken'));
+    }, [loggedIn]);
 
     return (
         <div className="search-bar-container">

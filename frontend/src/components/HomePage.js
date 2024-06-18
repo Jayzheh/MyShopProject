@@ -1,7 +1,7 @@
 import SearchBar from './searchBar';
 import React, { useEffect, useState } from 'react';
 import './HomePage.css';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function HomePage() {
     const [products, setProducts] = useState([]);
@@ -54,7 +54,7 @@ function HomePage() {
                 setProducts([]);
             }
         } catch (error) {
-            console.error("Error fetching products:", error); 
+            console.error("Error fetching products:", error);
             setError(error.message);
         } finally {
             setLoading(false);
@@ -69,26 +69,26 @@ function HomePage() {
     };
 
     return (
-    <div className="homepage-container">
-        <SearchBar onSearch={handleSearch} />
-        {loading && <p>Chargement en cours...</p>}
-        {error && <p>Erreur: {error}</p>}
-        <div className="products-grid">
-            {products.length > 0 ? (
-                products.map((product) => (
-                <Link to={`/products/${product.id}`} key={product.id} className="product-item">
-                    <div>
-                        <p className="product-title">{product.name}</p>
-                        <p className="product-description">{product.description}</p>
-                        <p className="product-price">{product.price} USD</p>
-                    </div>
-                </Link>
-                ))
-            ) : (
-            <p>Aucun produit trouvé</p>
-            )}
+        <div className="homepage-container">
+            <SearchBar onSearch={handleSearch} />
+            {loading && <p>Chargement en cours...</p>}
+            {error && <p>Erreur: {error}</p>}
+            <div className="products-grid">
+                {products.length > 0 ? (
+                    products.map((product) => (
+                        <Link to={`/products/${product.id}`} key={product.id} className="product-item">
+                            <div>
+                                <p className="product-title">{product.name}</p>
+                                <p className="product-description">{product.description}</p>
+                                <p className="product-price">{product.price} USD</p>
+                            </div>
+                        </Link>
+                    ))
+                ) : (
+                    <p>Aucun produit trouvé</p>
+                )}
+            </div>
         </div>
-    </div>
     );
 }
 
