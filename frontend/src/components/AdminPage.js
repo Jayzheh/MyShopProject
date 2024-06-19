@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
-import SearchBar from './searchBar'; 
 import './adminPage.css';
 import ProductsTable from './ProductsTable';
 import CategoriesTable from './CategoriesTable';
 import UsersTable from './UsersTable';
+import Search from './Search';
 
 function AdminPage() {
   const [activeMenu, setActiveMenu] = useState('Products'); // State to track active menu
@@ -28,7 +28,7 @@ function AdminPage() {
 
   return (
     <div>
-      <SearchBar onSearch={handleSearch} />
+      <Search onSearch={handleSearch} />
       <h1>MyShop Admin Panel</h1>
       <div className="menu">
         <button onClick={() => setActiveMenu('Products')}>Products</button>
