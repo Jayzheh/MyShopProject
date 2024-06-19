@@ -8,6 +8,7 @@ import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage'; 
 import AdminPage from './components/AdminPage';
 import ProductDetails from './components/ProductDetails';
+import BackupLoginPage from './components/BackupLoginPage'; 
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} /> {/* Abdoul et Dan Page */}
           <Route path="/register" element={<RegisterPage />} /> {/* Abdoul et Dan Page */}
           <Route path="/admin" element={<AdminPage />} /> {/* Dan Page */}
+          <Route path="/backup-login" element={<BackupLoginPage />} /> {/* aaaarrrgggg */}
   
         </Routes>
       </div>

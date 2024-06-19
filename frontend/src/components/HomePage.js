@@ -2,14 +2,18 @@ import SearchBar from './searchBar';
 import React, { useEffect, useState } from 'react';
 import './HomePage.css';
 import { Link } from "react-router-dom";
+import Search from './Search';
+import BackupLoginPage from './BackupLoginPage';
 
 function HomePage() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [showBackupLogin, setShowBackupLogin] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') !== null); // Track login state 
 
     useEffect(() => {
-        // Chargement initial des produits
+        // Initial product fetch
         fetchProducts({});
     }, []);
 
@@ -20,19 +24,19 @@ function HomePage() {
 
             const url = new URL('http://localhost/api/products');
 
-            // Ajout des paramètres de recherche à l'URL
+            // Append search parameters to the URL
             Object.keys(searchParams).forEach(key => {
                 if (searchParams[key]) {
                     url.searchParams.append(key, searchParams[key]);
                 }
             });
 
-            // Préparation des en-têtes de la requête
+            // Request headers setup
             const headers = new Headers({
                 'Content-Type': 'application/json'
             });
 
-            // Ajouter le token JWT s'il est disponible
+            // Add JWT token if available
             const storedToken = localStorage.getItem('token');
             if (storedToken) {
                 headers.append('Authorization', `Bearer ${storedToken}`);
@@ -63,14 +67,42 @@ function HomePage() {
 
     const handleSearch = (searchTerm) => {
         console.log("Search Term in handleSearch:", searchTerm);
-        // Modification pour utiliser uniquement le paramètre de recherche pertinent
         const searchParams = searchTerm ? { 'name': searchTerm } : {};
         fetchProducts(searchParams);
     };
 
+    const handleAuthClick = () => {
+        setShowBackupLogin(true); // Open login pop-up
+    };
+
+    const handleCloseBackupLogin = () => {
+        setShowBackupLogin(false); // Close login pop-up
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem('token'); // Remove token from localStorage
+        setLoggedIn(false); // Update logged-in state
+    };
+
+    useEffect(() => {
+        console.log("Token stored in localStorage:", localStorage.getItem('token'));
+    }, [loggedIn]);
+
     return (
         <div className="homepage-container">
-            <SearchBar onSearch={handleSearch} />
+            <div className="top-bar">
+                <h2 className="products-title">Nos produits</h2>
+                {loggedIn ? (
+                    <button onClick={handleLogout} className="login-button">
+                        Logout
+                    </button>
+                ) : (
+                    <button onClick={handleAuthClick} className="login-button">
+                        Login
+                    </button>
+                )}
+            </div>
+            <Search onSearch={handleSearch} />
             {loading && <p>Chargement en cours...</p>}
             {error && <p>Erreur: {error}</p>}
             <div className="products-grid">
@@ -88,12 +120,22 @@ function HomePage() {
                     <p>Aucun produit trouvé</p>
                 )}
             </div>
+            {/* Popup for BackupLoginPage */}
+            {showBackupLogin && (
+                <div className="popup-container">
+                    <div className="popup-content">
+                        <span className="close-popup" onClick={handleCloseBackupLogin}>
+                            &times;
+                        </span>
+                        <BackupLoginPage />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
 
 export default HomePage;
-
 
 
 

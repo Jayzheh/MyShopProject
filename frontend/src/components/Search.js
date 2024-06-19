@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './searchBar.css';
 import logo from '../images/myshop_logo.png';
 import BackupLoginPage from './BackupLoginPage';
+import { Link } from 'react-router-dom'; 
 
 const Search = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -53,10 +53,6 @@ const Search = ({ onSearch }) => {
         onSearch(searchTerm);
     };
 
-    const handleAuthClick = () => {
-        setShowBackupLogin(true);
-    };
-
     const handleLogout = () => {
         localStorage.removeItem('token');
         setLoggedIn(false);
@@ -82,13 +78,9 @@ const Search = ({ onSearch }) => {
                 />
                 {/* <button className="search-button" type="submit">Search</button> */}
             </form>
-            {loggedIn ? (
+            {loggedIn && (
                 <button onClick={handleLogout} className="login-button">
                     Logout
-                </button>
-            ) : (
-                <button onClick={handleAuthClick} className="login-button">
-                    Login
                 </button>
             )}
 
