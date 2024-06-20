@@ -10,12 +10,15 @@ function HomePage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [showBackupLogin, setShowBackupLogin] = useState(false);
-    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('token') !== null); // Track login state 
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('jwtToken') ? true : false)
 
     useEffect(() => {
         // Initial product fetch
+        console.log(localStorage.getItem('jwtToken'))
         fetchProducts({});
-    }, []);
+    }, [
+        localStorage.getItem('jwtToken')
+    ]);
 
     const fetchProducts = async (searchParams) => {
         try {
@@ -80,19 +83,19 @@ function HomePage() {
     };
 
     const handleLogout = () => {
-        localStorage.removeItem('token'); // Remove token from localStorage
+        localStorage.removeItem('jwtToken'); // Remove token from localStorage
         setLoggedIn(false); // Update logged-in state
     };
 
     useEffect(() => {
-        console.log("Token stored in localStorage:", localStorage.getItem('token'));
+        console.log("Token stored in localStorage:", localStorage.getItem('jwtToken'));
     }, [loggedIn]);
 
     return (
         <div className="homepage-container">
             <div className="top-bar">
                 <h2 className="products-title">Nos produits</h2>
-                {loggedIn ? (
+                {loggedIn == true ? (
                     <button onClick={handleLogout} className="login-button">
                         Logout
                     </button>
